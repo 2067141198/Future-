@@ -12,7 +12,7 @@ int gcd(int m, int n)
 	if (m % n > 0)
 		return gcd(n , m % n);
 }
-int main()
+int main2()
 {
 	int m = 0;
 	int n = 0;
