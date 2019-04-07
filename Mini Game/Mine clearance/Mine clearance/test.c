@@ -84,68 +84,27 @@ void UpdateShowMap(char show_map[MAX_ROW][MAX_COL], char mine_map[MAX_ROW][MAX_C
 	if (count != 0){
 		show_map[row][col] = (count + '0');
 	}
-	else{
+	else {
 		show_map[row][col] = ' ';
-		/*if (row == 0, col == 0){
-			UpdateShowMap(show_map, mine_map, row, col + 1);
-			UpdateShowMap(show_map, mine_map, row + 1, col);
-			UpdateShowMap(show_map, mine_map, row + 1, col + 1);
-			}
-			if (row == 0, col == MAX_COL){
-			UpdateShowMap(show_map, mine_map, row, col - 1);
-			UpdateShowMap(show_map, mine_map, row + 1, col - 1);
-			UpdateShowMap(show_map, mine_map, row + 1, col);
-			}
-			if (row == MAX_ROW, col == 0){
-			UpdateShowMap(show_map, mine_map, row - 1, col);
-			UpdateShowMap(show_map, mine_map, row - 1, col + 1);
-			UpdateShowMap(show_map, mine_map, row, col + 1);
-			}
-			if (row == MAX_ROW, col == MAX_COL){
+		if (row != 0 && col != 0 && show_map[row][col] == ' ')
 			UpdateShowMap(show_map, mine_map, row - 1, col - 1);
+		if (col != 0 && show_map[row][col] == ' ')
 			UpdateShowMap(show_map, mine_map, row - 1, col);
+		if (row != 0 && col != MAX_COL && show_map[row][col] == ' ')
 			UpdateShowMap(show_map, mine_map, row - 1, col + 1);
-			}
-			if (row == 0, col > 0 && col < MAX_COL){
+		if (col != 0 && show_map[row][col] == ' ')
 			UpdateShowMap(show_map, mine_map, row, col - 1);
+		if (col != MAX_ROW && show_map[row][col] == ' ')
 			UpdateShowMap(show_map, mine_map, row, col + 1);
+		if (row != MAX_ROW && col != 0 && show_map[row][col] == ' ')
 			UpdateShowMap(show_map, mine_map, row + 1, col - 1);
-			UpdateShowMap(show_map, mine_map, row + 1, col);
-			UpdateShowMap(show_map, mine_map, row + 1, col + 1);
-			}
-			if (row == MAX_ROW, col > 0 && col < MAX_COL){
+		if (row != MAX_ROW && show_map[row][col] == ' ')
 			UpdateShowMap(show_map, mine_map, row - 1, col - 1);
-			UpdateShowMap(show_map, mine_map, row - 1, col);
-			UpdateShowMap(show_map, mine_map, row - 1, col + 1);
-			UpdateShowMap(show_map, mine_map, row, col - 1);
-			UpdateShowMap(show_map, mine_map, row, col + 1);
-			}
-			if (row > 0 && row < MAX_ROW, col == 0){
-			UpdateShowMap(show_map, mine_map, row - 1, col);
-			UpdateShowMap(show_map, mine_map, row - 1, col + 1);
-			UpdateShowMap(show_map, mine_map, row, col + 1);
+		if (row != MAX_ROW && col != MAX_COL && show_map[row][col] == ' ')
 			UpdateShowMap(show_map, mine_map, row + 1, col);
-			UpdateShowMap(show_map, mine_map, row + 1, col + 1);
-			}
-			if (row > 0 && row < MAX_ROW, col == MAX_COL){
-			UpdateShowMap(show_map, mine_map, row - 1, col - 1);
-			UpdateShowMap(show_map, mine_map, row - 1, col);
-			UpdateShowMap(show_map, mine_map, row, col - 1);
-			UpdateShowMap(show_map, mine_map, row + 1, col - 1);
-			UpdateShowMap(show_map, mine_map, row + 1, col);
-			}
-			else{
-			UpdateShowMap(show_map, mine_map, row - 1, col - 1);
-			UpdateShowMap(show_map, mine_map, row - 1, col);
-			UpdateShowMap(show_map, mine_map, row - 1, col + 1);
-			UpdateShowMap(show_map, mine_map, row, col - 1);
-			UpdateShowMap(show_map, mine_map, row, col + 1);
-			UpdateShowMap(show_map, mine_map, row + 1, col - 1);
-			UpdateShowMap(show_map, mine_map, row + 1, col);
-			UpdateShowMap(show_map, mine_map, row + 1, col + 1);
-			}*/
 	}
 }
+
 
 
 void Game(){
