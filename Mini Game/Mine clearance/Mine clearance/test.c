@@ -94,6 +94,56 @@ void UpdateShowMap(char show_map[MAX_ROW][MAX_COL], char mine_map[MAX_ROW][MAX_C
 			UpdateShowMap(show_map, mine_map, row - 1, col + 1);
 		if (col != 0 && show_map[row][col] == ' ')
 			UpdateShowMap(show_map, mine_map, row, col - 1);
+		/*if (col != MAX_ROW && show_map[row][col] == ' ')
+			UpdateShowMap(show_map, mine_map, row, col + 1);
+		if (row != MAX_ROW && col != 0 && show_map[row][col] == ' ')
+			UpdateShowMap(show_map, mine_map, row + 1, col - 1);
+		if (row != MAX_ROW && show_map[row][col] == ' ')
+			UpdateShowMap(show_map, mine_map, row - 1, col - 1);
+		if (row != MAX_ROW && col != MAX_COL && show_map[row][col] == ' ')
+			UpdateShowMap(show_map, mine_map, row + 1, col);*/
+	}
+}
+
+void UpdateShowMap2(char show_map[MAX_ROW][MAX_COL], char mine_map[MAX_ROW][MAX_COL], int row, int col){
+	int count = 0;
+	if (row - 1 >= 0 && col - 1 >= 0 && mine_map[row - 1][col - 1] == '1'){
+		count++;
+	}
+	if (row - 1 >= 0 && mine_map[row - 1][col] == '1'){
+		count++;
+	}
+	if (row - 1 >= 0 && col + 1 < MAX_COL && mine_map[row - 1][col + 1] == '1'){
+		count++;
+	}
+	if (col - 1 >= 0 && mine_map[row][col - 1] == '1'){
+		count++;
+	}
+	if (col + 1 < MAX_COL && mine_map[row][col + 1] == '1'){
+		count++;
+	}
+	if (row + 1 < MAX_ROW && col - 1 >= 0 && mine_map[row + 1][col - 1] == '1'){
+		count++;
+	}
+	if (row + 1 < MAX_ROW && mine_map[row + 1][col] == '1'){
+		count++;
+	}
+	if (row + 1 < MAX_ROW && col + 1 < MAX_COL && mine_map[row + 1][col + 1] == '1'){
+		count++;
+	}
+	if (count != 0){
+		show_map[row][col] = (count + '0');
+	}
+	else {
+		show_map[row][col] = ' ';
+		/*if (row != 0 && col != 0 && show_map[row][col] == ' ')
+			UpdateShowMap(show_map, mine_map, row - 1, col - 1);
+		if (col != 0 && show_map[row][col] == ' ')
+			UpdateShowMap(show_map, mine_map, row - 1, col);
+		if (row != 0 && col != MAX_COL && show_map[row][col] == ' ')
+			UpdateShowMap(show_map, mine_map, row - 1, col + 1);
+		if (col != 0 && show_map[row][col] == ' ')
+			UpdateShowMap(show_map, mine_map, row, col - 1);*/
 		if (col != MAX_ROW && show_map[row][col] == ' ')
 			UpdateShowMap(show_map, mine_map, row, col + 1);
 		if (row != MAX_ROW && col != 0 && show_map[row][col] == ' ')
@@ -149,6 +199,7 @@ void Game(){
 		}
 		//7.更新地图把当前位置变成周围八个格子的地雷数
 		UpdateShowMap(show_map, mine_map, row, col);
+		UpdateShowMap2(show_map, mine_map, row, col);
 		}
 }
 
